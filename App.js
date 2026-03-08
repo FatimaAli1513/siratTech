@@ -22,7 +22,16 @@ function MainTabs() {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarStyle: { backgroundColor: COLORS.white, borderTopColor: '#e5e7eb' },
+        tabBarStyle: {
+          backgroundColor: COLORS.white,
+          borderTopColor: COLORS.border,
+          borderTopWidth: 1,
+          elevation: 8,
+          shadowColor: COLORS.shadow,
+          shadowOffset: { width: 0, height: -2 },
+          shadowOpacity: 0.06,
+          shadowRadius: 8,
+        },
         tabBarActiveTintColor: COLORS.orange,
         tabBarInactiveTintColor: COLORS.textMuted,
         tabBarLabelStyle: { fontSize: 12, fontWeight: '500' },

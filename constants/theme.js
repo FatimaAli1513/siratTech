@@ -7,8 +7,11 @@ export const COLORS = {
   black: '#0a0a0a',
   white: '#ffffff',
   lightBg: '#f8f9fc',
+  cardBg: '#ffffff',
   textDark: '#1a3459',
   textMuted: '#5a6b7d',
+  border: '#e8ecf1',
+  shadow: 'rgba(26, 52, 89, 0.08)',
 };
 
 export const SERVICES = [
