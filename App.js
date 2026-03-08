@@ -1,94 +1,89 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+import { COLORS } from './constants/theme';
 
-const COLORS = {
-  darkBlue: '#1a3459',
-  navy: '#2d5084',
-  orange: '#f28b2a',
-  orangeLight: '#ffb76d',
-  grey: '#6e85a3',
-  black: '#0a0a0a',
+import HomeScreen from './screens/HomeScreen';
+import ServicesScreen from './screens/ServicesScreen';
+import ServiceDetailScreen from './screens/ServiceDetailScreen';
+import AboutScreen from './screens/AboutScreen';
+import ContactScreen from './screens/ContactScreen';
+
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+const screenOptions = {
+  headerStyle: { backgroundColor: COLORS.black },
+  headerTintColor: COLORS.orange,
+  headerTitleStyle: { fontWeight: '600', fontSize: 18 },
 };
 
-export default function App() {
+function MainTabs() {
   return (
-    <View style={styles.container}>
-      <StatusBar style="light" />
-      
-      <View style={styles.content}>
-        <View style={styles.logoContainer}>
-          <Image
-            source={require('./assets/adaptive-icon.png')}
-            style={styles.logo}
-            resizeMode="contain"
-          />
-        </View>
-        
-        <Text style={styles.brandName}>
-          <Text style={styles.sirat}>SIRAT</Text>
-          <Text style={styles.tech}>Tech</Text>
-        </Text>
-        
-        <Text style={styles.tagline}>INNOVATE YOUR PATH</Text>
-        
-        <View style={styles.divider} />
-        
-        <Text style={styles.welcome}>
-          Welcome to SIRATTech{'\n'}
-          Your partner in innovation
-        </Text>
-      </View>
-    </View>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarStyle: { backgroundColor: COLORS.darkBlue, borderTopColor: COLORS.navy },
+        tabBarActiveTintColor: COLORS.orange,
+        tabBarInactiveTintColor: COLORS.grey,
+        tabBarLabelStyle: { fontSize: 12, fontWeight: '500' },
+      }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          title: 'Home',
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Services"
+        component={ServicesScreen}
+        options={{
+          title: 'Services',
+          headerShown: false,
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="grid" size={size} color={color} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.black,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  content: {
-    alignItems: 'center',
-    paddingHorizontal: 32,
-  },
-  logoContainer: {
-    marginBottom: 20,
-  },
-  logo: {
-    width: 140,
-    height: 100,
-  },
-  brandName: {
-    fontSize: 32,
-    fontWeight: '700',
-    letterSpacing: 2,
-    marginBottom: 8,
-  },
-  sirat: {
-    color: COLORS.navy,
-  },
-  tech: {
-    color: COLORS.orange,
-  },
-  tagline: {
-    fontSize: 12,
-    color: COLORS.grey,
-    letterSpacing: 4,
-    marginBottom: 32,
-  },
-  divider: {
-    width: 60,
-    height: 3,
-    backgroundColor: COLORS.orange,
-    marginBottom: 32,
-    borderRadius: 2,
-  },
-  welcome: {
-    fontSize: 16,
-    color: COLORS.grey,
-    textAlign: 'center',
-    lineHeight: 26,
-  },
-});
+export default function App() {
+  return (
+    <NavigationContainer>
+      <StatusBar style="light" />
+      <Stack.Navigator screenOptions={screenOptions}>
+        <Stack.Screen
+          name="Main"
+          component={MainTabs}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="ServiceDetail"
+          component={ServiceDetailScreen}
+          options={({ route }) => ({
+            title: route.params?.service?.title || 'Service',
+          })}
+        />
+        <Stack.Screen
+          name="About"
+          component={AboutScreen}
+          options={{ title: 'About Us' }}
+        />
+        <Stack.Screen
+          name="Contact"
+          component={ContactScreen}
+          options={{ title: 'Get in Touch' }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
