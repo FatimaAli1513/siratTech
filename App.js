@@ -9,24 +9,22 @@ import HomeScreen from './screens/HomeScreen';
 import ServicesScreen from './screens/ServicesScreen';
 import ServiceDetailScreen from './screens/ServiceDetailScreen';
 import AboutScreen from './screens/AboutScreen';
-import ContactScreen from './screens/ContactScreen';
-
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const screenOptions = {
-  headerStyle: { backgroundColor: COLORS.black },
+  headerStyle: { backgroundColor: COLORS.white },
   headerTintColor: COLORS.orange,
-  headerTitleStyle: { fontWeight: '600', fontSize: 18 },
+  headerTitleStyle: { fontWeight: '600', fontSize: 18, color: COLORS.textDark },
 };
 
 function MainTabs() {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarStyle: { backgroundColor: COLORS.darkBlue, borderTopColor: COLORS.navy },
+        tabBarStyle: { backgroundColor: COLORS.white, borderTopColor: '#e5e7eb' },
         tabBarActiveTintColor: COLORS.orange,
-        tabBarInactiveTintColor: COLORS.grey,
+        tabBarInactiveTintColor: COLORS.textMuted,
         tabBarLabelStyle: { fontSize: 12, fontWeight: '500' },
       }}
     >
@@ -59,7 +57,7 @@ function MainTabs() {
 export default function App() {
   return (
     <NavigationContainer>
-      <StatusBar style="light" />
+      <StatusBar style="dark" />
       <Stack.Navigator screenOptions={screenOptions}>
         <Stack.Screen
           name="Main"
@@ -77,11 +75,6 @@ export default function App() {
           name="About"
           component={AboutScreen}
           options={{ title: 'About Us' }}
-        />
-        <Stack.Screen
-          name="Contact"
-          component={ContactScreen}
-          options={{ title: 'Get in Touch' }}
         />
       </Stack.Navigator>
     </NavigationContainer>

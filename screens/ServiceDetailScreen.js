@@ -22,7 +22,7 @@ export default function ServiceDetailScreen({ route }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.black,
+    backgroundColor: COLORS.white,
   },
   content: {
     padding: 24,
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: '700',
-    color: COLORS.white,
+    color: COLORS.textDark,
     lineHeight: 32,
     marginBottom: 8,
   },
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: 15,
-    color: COLORS.grey,
+    color: COLORS.textMuted,
     lineHeight: 26,
   },
 });

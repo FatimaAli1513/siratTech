@@ -44,7 +44,7 @@ export default function ServicesScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.black,
+    backgroundColor: COLORS.white,
   },
   header: {
     alignItems: 'center',
@@ -59,12 +59,12 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 22,
     fontWeight: '700',
-    color: COLORS.white,
+    color: COLORS.textDark,
     marginBottom: 4,
   },
   subtitle: {
     fontSize: 14,
-    color: COLORS.grey,
+    color: COLORS.textMuted,
   },
   list: {
     paddingHorizontal: 20,
@@ -72,10 +72,12 @@ const styles = StyleSheet.create({
   },
   card: {
     flexDirection: 'row',
-    backgroundColor: COLORS.darkBlue,
+    backgroundColor: COLORS.lightBg,
     borderRadius: 14,
     padding: 18,
     marginBottom: 14,
+    borderWidth: 1,
+    borderColor: '#e8ecf1',
   },
   cardNumber: {
     width: 44,
@@ -97,11 +99,11 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 16,
     fontWeight: '600',
-    color: COLORS.white,
+    color: COLORS.textDark,
   },
   cardSubtitle: {
     fontSize: 13,
-    color: COLORS.grey,
+    color: COLORS.textMuted,
     marginTop: 4,
   },
 });

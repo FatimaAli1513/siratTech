@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
-import { COLORS, SERVICES } from '../constants/theme';
+import { Ionicons } from '@expo/vector-icons';
+import { COLORS } from '../constants/theme';
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -15,47 +16,67 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.tech}>Tech</Text>
         </Text>
         <Text style={styles.tagline}>INNOVATE YOUR PATH</Text>
-        <Text style={styles.subtitle}>Tech Sirat Technologies (Pvt.) Ltd.</Text>
+        <Text style={styles.companyName}>Tech Sirat Technologies (Pvt.) Ltd.</Text>
       </View>
 
       <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Our Services</Text>
-        {SERVICES.map((service) => (
-          <TouchableOpacity
-            key={service.id}
-            style={styles.serviceCard}
-            onPress={() => navigation.navigate('ServiceDetail', { service })}
-            activeOpacity={0.8}
-          >
-            <View style={styles.serviceIcon}>
-              <Text style={styles.serviceIconText}>{service.id}</Text>
-            </View>
-            <View style={styles.serviceContent}>
-              <Text style={styles.serviceTitle}>{service.title}</Text>
-              <Text style={styles.serviceSubtitle}>{service.subtitle}</Text>
-            </View>
-          </TouchableOpacity>
-        ))}
+        <Text style={styles.sectionTitle}>Who We Are</Text>
+        <Text style={styles.paragraph}>
+          A technology company committed to delivering innovative solutions that reshape industries. We help organizations adopt digital technologies and connect with the entire value chain.
+        </Text>
       </View>
 
-      <View style={styles.ctaSection}>
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Our Vision</Text>
+        <Text style={styles.paragraph}>
+          To be the leading partner in digital transformation, enabling businesses to achieve breakthrough growth through cutting-edge technology solutions.
+        </Text>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Our Values</Text>
+        <View style={styles.valuesList}>
+          <View style={styles.valueItem}>
+            <Ionicons name="checkmark-circle" size={20} color={COLORS.orange} />
+            <Text style={styles.valueText}>Innovation</Text>
+          </View>
+          <View style={styles.valueItem}>
+            <Ionicons name="checkmark-circle" size={20} color={COLORS.orange} />
+            <Text style={styles.valueText}>Quality</Text>
+          </View>
+          <View style={styles.valueItem}>
+            <Ionicons name="checkmark-circle" size={20} color={COLORS.orange} />
+            <Text style={styles.valueText}>Transparency</Text>
+          </View>
+          <View style={styles.valueItem}>
+            <Ionicons name="checkmark-circle" size={20} color={COLORS.orange} />
+            <Text style={styles.valueText}>Client Success</Text>
+          </View>
+        </View>
+      </View>
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Explore Our Solutions</Text>
+        <Text style={styles.paragraph}>
+          From Agri-Tech to E-commerce, Field Force Management to Business Consultancy — we offer end-to-end digital solutions.
+        </Text>
         <TouchableOpacity
-          style={styles.ctaButton}
+          style={styles.primaryButton}
           onPress={() => navigation.navigate('Services')}
         >
-          <Text style={styles.ctaButtonText}>View All Services</Text>
+          <Text style={styles.primaryButtonText}>View All Services</Text>
+          <Ionicons name="arrow-forward" size={18} color={COLORS.black} />
         </TouchableOpacity>
+      </View>
+
+      <View style={styles.footer}>
         <TouchableOpacity
-          style={styles.ctaButtonOutline}
-          onPress={() => navigation.navigate('Contact')}
-        >
-          <Text style={styles.ctaButtonOutlineText}>Get in Touch</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.linkButton}
+          style={styles.aboutButton}
           onPress={() => navigation.navigate('About')}
+          activeOpacity={0.8}
         >
-          <Text style={styles.linkButtonText}>About Us</Text>
+          <Text style={styles.aboutButtonText}>About Us</Text>
+          <Ionicons name="information-circle-outline" size={20} color={COLORS.orange} />
         </TouchableOpacity>
       </View>
     </ScrollView>
@@ -65,11 +86,11 @@ export default function HomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.black,
+    backgroundColor: COLORS.white,
   },
   hero: {
     alignItems: 'center',
-    paddingVertical: 40,
+    paddingVertical: 36,
     paddingHorizontal: 24,
   },
   logo: {
@@ -87,94 +108,75 @@ const styles = StyleSheet.create({
   tech: { color: COLORS.orange },
   tagline: {
     fontSize: 11,
-    color: COLORS.grey,
+    color: COLORS.textMuted,
     letterSpacing: 3,
     marginBottom: 4,
   },
-  subtitle: {
+  companyName: {
     fontSize: 12,
-    color: COLORS.grey,
+    color: COLORS.textMuted,
   },
   section: {
     paddingHorizontal: 20,
-    paddingBottom: 32,
+    paddingBottom: 28,
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: '700',
-    color: COLORS.white,
-    marginBottom: 20,
-    letterSpacing: 1,
+    color: COLORS.orange,
+    marginBottom: 12,
+    letterSpacing: 0.5,
   },
-  serviceCard: {
+  paragraph: {
+    fontSize: 15,
+    color: COLORS.textMuted,
+    lineHeight: 24,
+  },
+  valuesList: {
+    gap: 10,
+  },
+  valueItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: COLORS.darkBlue,
-    borderRadius: 12,
-    padding: 16,
-    marginBottom: 12,
+    gap: 10,
   },
-  serviceIcon: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: COLORS.orange,
+  valueText: {
+    fontSize: 15,
+    color: COLORS.textMuted,
+  },
+  primaryButton: {
+    flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  serviceIconText: {
-    color: COLORS.black,
-    fontWeight: '700',
-    fontSize: 16,
-  },
-  serviceContent: {
-    flex: 1,
-    marginLeft: 14,
-  },
-  serviceTitle: {
-    fontSize: 15,
-    fontWeight: '600',
-    color: COLORS.white,
-  },
-  serviceSubtitle: {
-    fontSize: 12,
-    color: COLORS.grey,
-    marginTop: 2,
-  },
-  ctaSection: {
-    paddingHorizontal: 20,
-    paddingBottom: 40,
-    gap: 12,
-  },
-  ctaButton: {
+    gap: 8,
     backgroundColor: COLORS.orange,
-    paddingVertical: 16,
+    paddingVertical: 14,
     borderRadius: 12,
-    alignItems: 'center',
+    marginTop: 16,
   },
-  ctaButtonText: {
+  primaryButtonText: {
     color: COLORS.black,
     fontWeight: '700',
     fontSize: 16,
   },
-  ctaButtonOutline: {
+  footer: {
+    alignItems: 'center',
+    paddingVertical: 32,
+    paddingBottom: 48,
+  },
+  aboutButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
     borderWidth: 2,
     borderColor: COLORS.orange,
     paddingVertical: 14,
+    paddingHorizontal: 24,
     borderRadius: 12,
-    alignItems: 'center',
   },
-  ctaButtonOutlineText: {
+  aboutButtonText: {
     color: COLORS.orange,
     fontWeight: '600',
     fontSize: 16,
-  },
-  linkButton: {
-    paddingVertical: 12,
-    marginTop: 8,
-  },
-  linkButtonText: {
-    color: COLORS.grey,
-    fontSize: 14,
   },
 });

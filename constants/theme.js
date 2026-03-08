@@ -6,6 +6,9 @@ export const COLORS = {
   grey: '#6e85a3',
   black: '#0a0a0a',
   white: '#ffffff',
+  lightBg: '#f8f9fc',
+  textDark: '#1a3459',
+  textMuted: '#5a6b7d',
 };
 
 export const SERVICES = [

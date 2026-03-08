@@ -43,7 +43,7 @@ export default function AboutScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: COLORS.black,
+    backgroundColor: COLORS.white,
   },
   content: {
     padding: 24,
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
   tech: { color: COLORS.orange },
   tagline: {
     fontSize: 11,
-    color: COLORS.grey,
+    color: COLORS.textMuted,
     letterSpacing: 3,
     marginBottom: 32,
   },
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
   },
   paragraph: {
     fontSize: 15,
-    color: COLORS.grey,
+    color: COLORS.textMuted,
     lineHeight: 26,
     marginBottom: 28,
     textAlign: 'left',
