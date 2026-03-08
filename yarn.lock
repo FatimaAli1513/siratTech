@@ -5487,9 +5487,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sirattech@workspace:.":
+"siratTech@workspace:.":
   version: 0.0.0-use.local
-  resolution: "sirattech@workspace:."
+  resolution: "siratTech@workspace:."
   dependencies:
     expo: "npm:~55.0.5"
     expo-status-bar: "npm:~55.0.4"
