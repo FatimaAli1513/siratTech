@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, ScrollView, Image, Platform } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, Image, Platform, TouchableOpacity, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS } from '../constants/theme';
 
@@ -82,6 +82,41 @@ export default function AboutScreen() {
           <Text style={styles.paragraph}>
             Innovation, Quality, Transparency, and Client Success drive everything we do.
           </Text>
+        </View>
+
+        <View style={[styles.sectionCard, shadow]}>
+          <View style={styles.sectionHeader}>
+            <Ionicons name="location" size={22} color={COLORS.orange} />
+            <Text style={styles.sectionTitle}>Contact Details</Text>
+          </View>
+          <View style={styles.detailRow}>
+            <Ionicons name="business" size={18} color={COLORS.textMuted} style={styles.detailIcon} />
+            <Text style={styles.detailText}>SIRAT TECHNOLOGIES</Text>
+          </View>
+          <View style={styles.detailRow}>
+            <Ionicons name="location-outline" size={18} color={COLORS.textMuted} style={styles.detailIcon} />
+            <Text style={styles.detailText}>
+              Hayaban-E-Amin{'\n'}
+              Lahore Cantt Lahore, 54000{'\n'}
+              Pakistan
+            </Text>
+          </View>
+          <TouchableOpacity
+            style={styles.detailRow}
+            onPress={() => Linking.openURL('mailto:saeedali.pak120@gmail.com')}
+            activeOpacity={0.7}
+          >
+            <Ionicons name="mail-outline" size={18} color={COLORS.textMuted} style={styles.detailIcon} />
+            <Text style={[styles.detailText, styles.linkText]}>saeedali.pak120@gmail.com</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.detailRow}
+            onPress={() => Linking.openURL('https://sirattechnologies.site')}
+            activeOpacity={0.7}
+          >
+            <Ionicons name="globe-outline" size={18} color={COLORS.textMuted} style={styles.detailIcon} />
+            <Text style={[styles.detailText, styles.linkText]}>sirattechnologies.site</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>
@@ -171,5 +206,24 @@ const styles = StyleSheet.create({
   valuesCard: {
     borderLeftWidth: 4,
     borderLeftColor: COLORS.orange,
+  },
+  detailRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    marginBottom: 14,
+  },
+  detailIcon: {
+    marginRight: 12,
+    marginTop: 2,
+  },
+  detailText: {
+    flex: 1,
+    fontSize: 15,
+    color: COLORS.textMuted,
+    lineHeight: 22,
+  },
+  linkText: {
+    color: COLORS.orange,
+    fontWeight: '500',
   },
 });
